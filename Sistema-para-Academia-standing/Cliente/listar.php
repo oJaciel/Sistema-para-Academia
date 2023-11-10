@@ -12,61 +12,45 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html">aqui vai a logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="../index.html">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Cliente
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Cliente/listar.php">Visualizar</a></li>
-                            <li><a class="dropdown-item" href="../criar.php">Criar</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="listar.php">Cliente</a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Exercício
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Exercicio/listar.php">Visualizar</a></li>
-                            <li><a class="dropdown-item" href="../Exercicio/criar.php">Criar</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Exercicio/listar.php">Exercício</a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Treino
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Treino/listar.php">Visualizar</a></li>
-                            <li><a class="dropdown-item" href="../Treino/criar.php">Criar</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Treino/listar.php">Treino</a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categoria Exercício
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../Categoria_Exercicio/listar.php">Visualizar</a></li>
-                            <li><a class="dropdown-item" href="../Categoria_Exercicio/criar.php">Criar</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Categoria_Exercicio/listar.php">Categoria Exercício</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <a class="btn btn-primary" href="criar.php">Adicionar novo cliente</a>
-
     <br>
 
-    <table class="table table-striped ">
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cliente</li>
+        </ol>
+    </nav>
+
+
+    <a class="btn btn-primary ms-3 mt-3 mb-3" href="criar.php">Adicionar novo cliente</a>
+
+    <br>
+    <br>
+
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -79,16 +63,16 @@
         </thead>
         <tbody>
 
-        <?php
-        include("../conexao.php");
+            <?php
+            include("../conexao.php");
 
-        $sql_cliente = "SELECT * FROM Cliente";
+            $sql_cliente = "SELECT * FROM Cliente";
 
-        $pesquisa = $conexao->query($sql_cliente);
+            $pesquisa = $conexao->query($sql_cliente);
 
-        if ($pesquisa->num_rows > 0) {
-            while ($row = $pesquisa->fetch_assoc()) {
-                echo "
+            if ($pesquisa->num_rows > 0) {
+                while ($row = $pesquisa->fetch_assoc()) {
+                    echo "
                 <tr>
                   <th scope='row'>" . $row["id"] . "</th>
                   <td> " . $row["nome"] . "</td>
@@ -96,10 +80,10 @@
                   <td>" . $row["telefone"] . "</td>
                   <td>" . $row["cpf"] . "</td>
                   <td>" . $row["endereco"] . "</tr>";
+                }
             }
-        }
 
-        ?>
+            ?>
 
         </tbody>
     </table>
