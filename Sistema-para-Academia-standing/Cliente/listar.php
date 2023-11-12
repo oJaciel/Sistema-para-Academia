@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.html">Navbar</a>
@@ -59,6 +58,7 @@
                 <th scope="col">Telefone</th>
                 <th scope="col">CPF</th>
                 <th scope="col">Endereço</th>
+            
             </tr>
         </thead>
         <tbody>
@@ -72,15 +72,16 @@
 
             if ($pesquisa->num_rows > 0) {
                 while ($row = $pesquisa->fetch_assoc()) {
-                    echo "
-                <tr>
-                  <th scope='row'>" . $row["id"] . "</th>
-                  <td> " . $row["nome"] . "</td>
-                  <td>" . $row["email"] . "</td>
-                  <td>" . $row["telefone"] . "</td>
-                  <td>" . $row["cpf"] . "</td>
-                  <td>" . $row["endereco"] . "</tr>";
+                    echo "<tr>";
+                    echo "<th scope='row'>" . $row["id"] . "</th>";
+                    echo "<td> " . $row["nome"] . "</td>";
+                    echo "<td>" . $row["email"] . "</td>";
+                    echo "<td>" . $row["telefone"] . "</td>";
+                    echo "<td>" . $row["cpf"] . "</td>";
+                    echo "<td>" . $row["endereco"] . "</td>";
+                    echo "<td><a class = 'btn btn-primary'href='editar.php?id=" . $row["id"] . "'>Editar</a>  <a class  = 'btn btn-danger'href='excluir.php?id=" . $row["id"] . "'>Deletar</a></td>";
                 }
+                
             }
 
             ?>

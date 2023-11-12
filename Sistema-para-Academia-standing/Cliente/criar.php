@@ -58,7 +58,7 @@
         <form action="criar.php" method="post" class="row g-3">
 
             <div class="col-12">
-                <div class="bg-primary opacity-75 bg-gradient p-3 text-center mb-2 text-white fw-bolder fs-3">
+                <div class="bg-primary opacity-75 p-3 text-center mb-2 text-white fw-bolder fs-3">
                     Cadastrar Novo Cliente
                 </div>
             </div>
@@ -89,9 +89,15 @@
             </div>
 
 
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="submit" value="Salvar" class="btn btn-primary w-100 bg-gradient p-3 text-center mb-2 mt-5 text-white fw-bolder fs-3" id="button"></input>
+                </div>
 
-            <button type="submit" class="btn btn-primary w-100 bg-gradient p-3 text-center mb-2 mt-5 text-white fw-bolder fs-3" id="button">Salvar</button>
-
+                <div class="col-md-4">
+                    <a type="button" href="listar.php" class="btn btn-danger w-100 p-3 text-center mb-2 mt-5 text-white fw-bolder fs-3" id="button">Cancelar</a>
+                </div>
+            </div>
 
 
         </form>
