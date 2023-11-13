@@ -14,34 +14,19 @@
 
 </head>
 
+<body>
 
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+  $(function() {
+    $("#header").load("../header.html");
+    $("#footer").load("../footer.html");
+  });
+</script>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="listar.php">Cliente</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Exercicio/listar.php">Exercício</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Treino/listar.php">Treino</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Categoria_Exercicio/listar.php">Categoria Exercício</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <div id="header"></div>
 
     <br>
 
