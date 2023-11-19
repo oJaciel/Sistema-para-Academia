@@ -62,7 +62,7 @@
       <div class="row">
         <div class="col-md-8">
           <label for="categoria_id" class="form-label">Categoria:</label>
-          <select class="form-select">
+          <select class="form-select" name = "categoria_id">
             <option selected>Selecione uma categoria</option>
             <?php 
              
@@ -98,10 +98,11 @@
 
   <?php
 
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $duracao = $_POST['duracao'];
-    $categoria_id = isset($_POST['categoria_id']);
+    $categoria_id = isset($_POST['categoria_id']) ? $_POST['categoria_id']:null;
 
     $sql_exercicio =
       "INSERT INTO Exercicio 
@@ -109,16 +110,18 @@
         VALUES
           ('$nome', '$duracao', '$categoria_id')";
 
-    if ($conexao ->query($sql_exercicio) == TRUE) {
+    if ($conexao ->query($sql_exercicio) ===TRUE) {
       header("Location: listar.php");
     } 
     else {
-      echo "$categoria teste teste";
       echo "Erro: " . $conexao->error;
+      echo "$sql_exercicio";
       
     }
 
+
   }
+
 
 $conexao->close();
 ?>
