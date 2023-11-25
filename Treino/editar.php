@@ -27,7 +27,7 @@
   </nav>
 
   <?php
-  include ('../conexao.php');
+  include('../conexao.php');
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
@@ -44,8 +44,8 @@
       echo "Erro ao atualizar: " . $conexao->error;
     }
   } else {
-        $id = $_GET['id'];
-        $sql = "SELECT 
+    $id = $_GET['id'];
+    $sql = "SELECT 
         t.id,
         t.data_treino,
         t.Criado_em,
@@ -57,7 +57,7 @@
         FROM Treino as t
         INNER JOIN Exercicio as e ON e.id = t.exercicio_id
         INNER JOIN Cliente as c ON c.id = t.cliente_id
-        WHERE e.id= '$id'";
+        WHERE t.id= '$id'";
 
 
     $result = $conexao->query($sql);
@@ -73,30 +73,30 @@
   ?>
 
 
-<div class="container mt-3 pt-3">
+  <div class="container mt-3 pt-3">
 
-<div class="row">
-  <div class="col-12">
-    <div class="bg-primary opacity-75 p-3 text-center mb-2 text-white fw-bolder fs-3">
-      Editar Treino
+    <div class="row">
+      <div class="col-12">
+        <div class="bg-primary opacity-75 p-3 text-center mb-2 text-white fw-bolder fs-3">
+          Editar Treino
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<form action="editar.php" method="post">
+    <form action="editar.php" method="post">
 
-  <div class="row">
-  <div class="col-2">
+      <div class="row">
+        <div class="col-2">
           <label for="id" class="form-label">ID</label>
           <input type="text" class="form-control" name="id" id="id" value="<?= $treino['id']; ?>" readonly>
         </div>
 
-    <div class="col-md-5">
-      <label for="cliente_id" class="form-label">Cliente:</label>
-      <select class="form-select" name="cliente_id">
-        <option selected value='<?=$treino['cliente_id'] ?>'> <?=$treino['cliente_id'] . ' - ' . $treino['nome_cliente']?> </option>
-        <?php
-        /*
+        <div class="col-md-5">
+          <label for="cliente_id" class="form-label">Cliente:</label>
+          <select class="form-select" name="cliente_id">
+            <option selected value='<?= $treino['cliente_id'] ?>'> <?= $treino['cliente_id'] . ' - ' . $treino['nome_cliente'] ?> </option>
+            <?php
+            /*
         $sql_categoria = "SELECT id, nome 
         
          FROM Cliente";
@@ -110,16 +110,16 @@
           echo "<option value='$cliente_id'>$cliente_id - $cliente_nome </option>";
         }
         */
-        ?>
-      </select>
-    </div>
+            ?>
+          </select>
+        </div>
 
-    <div class="col-md-5">
-        <label for="exercicio_id" class="form-label">Exercício:</label>
-        <select class="form-select" name="exercicio_id">
-         <option selected value='<?= $treino['exercicio_id']?>'><?= $treino['exercicio_id'] . ' - ' . $treino['nome_exercicio'] ?></option>
-        <?php
-        /*
+        <div class="col-md-5">
+          <label for="exercicio_id" class="form-label">Exercício:</label>
+          <select class="form-select" name="exercicio_id">
+            <option selected value='<?= $treino['exercicio_id'] ?>'><?= $treino['exercicio_id'] . ' - ' . $treino['nome_exercicio'] ?></option>
+            <?php
+            /*
         $sql_categoria = "SELECT id, nome 
 
           FROM Exercicio";
@@ -133,35 +133,39 @@
           echo "<option value='$exercicio_id'>$exercicio_id - $exercicio_nome </option>";
         }
         */
-        ?>
-      </select>
-    </div>
+            ?>
+          </select>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label for="data_treino" class="form-label">Data do Treino:</label>
+          <input type="date" name="data_treino" id="data_treino" class="form-control" required value='<?= $treino['data_treino'] ?>'>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <input type="submit" value="Salvar" class="btn btn-primary w-100 bg-gradient p-3 text-center mb-2 mt-5 text-white fw-bolder fs-3" id="button"></input>
+        </div>
+
+        <div class="col-md-4">
+          <a type="button" href="listar.php" class="btn btn-danger w-100 p-3 text-center mb-2 mt-5 text-white fw-bolder fs-3" id="button">Cancelar</a>
+        </div>
+      </div>
+    </form>
   </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col-md-4">
-      <label for="data_treino" class="form-label">Data do Treino:</label>
-      <input type="date" name="data_treino" id="data_treino" class="form-control" required value='<?=$treino['data_treino']?>'>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-8">
-      <input type="submit" value="Salvar" class="btn btn-primary w-100 bg-gradient p-3 text-center mb-2 mt-5 text-white fw-bolder fs-3" id="button"></input>
-    </div>
-
-    <div class="col-md-4">
-      <a type="button" href="listar.php" class="btn btn-danger w-100 p-3 text-center mb-2 mt-5 text-white fw-bolder fs-3" id="button">Cancelar</a>
-    </div>
-  </div>
-</form>
-</div>
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <?php 
+    include ('../footer.html')
+  ?>
 
 </body>
 

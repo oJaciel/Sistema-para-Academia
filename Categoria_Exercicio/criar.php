@@ -11,7 +11,7 @@
 
 <body>
 
-    <?php include ('../header.html');?>
+  <?php include('../header.html'); ?>
 
   <br>
 
@@ -58,33 +58,33 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+  <?php
+  include('../footer.html')
+  ?>
+
 </body>
-
-
 
 </html>
 
 <?php
-  include('../conexao.php');
+include('../conexao.php');
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['nome'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $nome = $_POST['nome'];
 
 
-    $sql_categoria =
-      "INSERT INTO Categoria_exercicio 
+  $sql_categoria =
+    "INSERT INTO Categoria_exercicio 
           (nome)
         VALUES
           ('$nome')";
 
-    if ($conexao->query($sql_categoria) === TRUE) {
-      header("Location: listar.php");
-    } 
-    else {
-      echo "Erro: " . $conexao->error;
-    }
-
+  if ($conexao->query($sql_categoria) === TRUE) {
+    header("Location: listar.php");
+  } else {
+    echo "Erro: " . $conexao->error;
   }
+}
 
 $conexao->close();
 ?>
