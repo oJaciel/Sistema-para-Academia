@@ -6,14 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Visualizar Exercício</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
 </head>
 
 <body>
 
-    <?php 
-    include ('../header.html');
-    ?>
+  <?php
+  include('../header.html');
+  ?>
 
   <br>
 
@@ -26,26 +25,26 @@
 
   <a class="btn btn-primary ms-3 mt-3 mb-3" href="criar.php">Adicionar novo exercício</a>
 
-<br>
-<br>
+  <br>
+  <br>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Duração (min)</th>
-      <th scope="col">Categoria</th>
-      <th scope="col">Data de criação</th>
-      <th scope="col">Última atualização</th>
-    </tr>
-  </thead>
-  <tbody>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Duração (min)</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Data de criação</th>
+        <th scope="col">Última atualização</th>
+      </tr>
+    </thead>
+    <tbody>
 
-    <?php
-    include("../conexao.php");
+      <?php
+      include("../conexao.php");
 
-    $sql_exercicio = "SELECT 
+      $sql_exercicio = "SELECT 
       e.id, 
       e.nome as nome_exercicio, 
       e.duracao, 
@@ -55,30 +54,40 @@
     FROM Exercicio as e
     INNER JOIN Categoria_exercicio as c ON c.id = e.categoria_id";
 
-    $pesquisa = $conexao->query($sql_exercicio);
+      $pesquisa = $conexao->query($sql_exercicio);
 
-    if ($pesquisa->num_rows > 0) {
-      while ($row = $pesquisa->fetch_assoc()) {
-        echo "<tr>";
-        echo "<th scope='row'>" . $row["id"] . "</th>";
-        echo "<td> " . $row["nome_exercicio"] . "</td>";
-        echo "<td> " . $row["duracao"] . "</td>";
-        echo "<td> " . $row["nome_categoria"] . "</td>";
-        echo "<td>"  . $row["Criado_em"] . "</td>";
-        echo "<td>"  . $row["Atualizado_em"] . "</td>";
-        echo "<td><a class = 'btn btn-primary'href='editar.php?id=" . $row["id"] . "'>Editar</a>  <a class  = 'btn btn-danger' onclick = btdelete() href='excluir.php?id=" . $row["id"] . "'>Deletar</a></td>";
+      if ($pesquisa->num_rows > 0) {
+        while ($row = $pesquisa->fetch_assoc()) {
+          echo "<tr>";
+          echo "<th scope='row'>" . $row["id"] . "</th>";
+          echo "<td> " . $row["nome_exercicio"] . "</td>";
+          echo "<td> " . $row["duracao"] . "</td>";
+          echo "<td> " . $row["nome_categoria"] . "</td>";
+          echo "<td>"  . $row["Criado_em"] . "</td>";
+          echo "<td>"  . $row["Atualizado_em"] . "</td>";
+          echo "<td>
+        <script> 
+        function ConfirmaExclusao() {
+      if (confirm('Tem certeza que deseja excluir esse registro?'))
+           location.href='excluir.php?id=" . $row["id"] . "';
+}
+        </script>
+        
+        <a class = 'btn btn-primary'href='editar.php?id=" . $row["id"] . "'>Editar</a>
+        
+        <button class  = 'btn btn-danger' onClick='ConfirmaExclusao()' href='excluir.php?id=" . $row["id"] . "'>Deletar</button></td>";
+        }
       }
-    }
 
-    ?>
+      ?>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-  <?php 
-    include ('../footer.html')
+  <?php
+  include('../footer.html')
   ?>
 
 </body>

@@ -66,10 +66,19 @@
           echo "<td> " . $row["data_treino"] . "</td>";
           echo "<td>"  . $row["Criado_em"] . "</td>";
           echo "<td>"  . $row["Atualizado_em"] . "</td>";
-          echo "<td><a class = 'btn btn-primary'href='editar.php?id=" . $row["id"] . "'>Editar</a>  <a class  = 'btn btn-danger' onclick = btdelete() href='excluir.php?id=" . $row["id"] . "'>Deletar</a></td>";
-        }
-      }
-
+          echo "<td>
+        <script> 
+        function ConfirmaExclusao() {
+      if (confirm('Tem certeza que deseja excluir esse registro?'))
+           location.href='excluir.php?id=" . $row["id"] . "';
+}
+        </script>
+        
+        <a class = 'btn btn-primary'href='editar.php?id=" . $row["id"] . "'>Editar</a>
+        
+        <button class  = 'btn btn-danger' onClick='ConfirmaExclusao()' href='excluir.php?id=" . $row["id"] . "'>Deletar</button></td>";
+                }
+            }
       ?>
 
     </tbody>
