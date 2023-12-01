@@ -84,7 +84,7 @@
 
       <div class="col-md-4">
         <label for="cpf" class="form-label">CPF</label>
-        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Insira o CPF" value="<?= $cliente['cpf']; ?>" required maxlength="11">
+        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Insira o CPF" value="<?= $cliente['cpf']; ?>" required>
       </div>
 
       <div class="col-md-6">
@@ -113,8 +113,8 @@
         </div>
       </div>
 
-
     </form>
+
   </div>
 
   <?php 

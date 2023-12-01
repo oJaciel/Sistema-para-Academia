@@ -50,7 +50,7 @@
 
             <div class="col-md-4">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Insira o CPF" required>
+                <input type="text" class="form-control" name="cpf" id="cpf" maxlength="11" oninput="formatCPF(this)" placeholder="Insira o CPF" required>
             </div>
 
             <div class="col-md-6">
@@ -81,6 +81,15 @@
 
 
         </form>
+        <script>
+            function formatCPF(input) {
+                let cpf = input.value.replace(/\D/g, '');
+                cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                input.value = cpf;
+
+            }
+        </script>
+
     </div>
 
 

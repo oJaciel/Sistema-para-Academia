@@ -9,7 +9,6 @@
 
 </head>
 
-
 <body>
 
   <?php
@@ -97,13 +96,13 @@
             <option selected value='<?= $treino['cliente_id'] ?>'> <?= $treino['cliente_id'] . ' - ' . $treino['nome_cliente'] ?> </option>
             <?php
             /*
-        $sql_categoria = "SELECT id, nome 
+        $sql_cliente = "SELECT id, nome 
         
          FROM Cliente";
 
-        $result_categoria = $conexao->query($sql_categoria);
+        $result_cliente = $conexao->query($sql_cliente);
 
-        while ($row = $result_categoria->fetch_assoc()) {
+        while ($row = $result_cliente->fetch_assoc()) {
           $cliente_id = $row['id'];
           $cliente_nome = $row['nome'];
 
